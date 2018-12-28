@@ -1,5 +1,13 @@
- spring:
+spring:
   data:
     mongodb:
       uri: mongodb://127.0.0.1:27017
       database: database
+  redis:
+    host: 127.0.0.1
+    port: 6379
+
+jwt:
+  config:
+    key: HeavenY    #加盐
+    ttl: 3600000 #过期时间1个小时

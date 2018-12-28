@@ -28,7 +28,7 @@ public class MongoDbRepostoryTests {
 	
 	@Test
 	public void testinsertMg() {
-		User user = new User(123L,"王","qaz321");
+		User user = new User("123","王","qaz321","垃圾taba");
 		Optional<User> findById = userRepository.findById(123L);
 		
 	}

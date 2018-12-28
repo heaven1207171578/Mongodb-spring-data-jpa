@@ -10,9 +10,11 @@ import org.springframework.data.annotation.Id;
 @ToString
 public class User implements Serializable{
 	@Id
-	private Long id;
+	private String id;
     private String userName;
     private String passWord;
+    private Object role;
+
 
 
 

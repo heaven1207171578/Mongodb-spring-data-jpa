@@ -24,7 +24,7 @@ public class MongoDbApplicationTests {
 	
 	@Test
 	public void testinsertMg() {
-		User user = new User(123L,"王","qaz321");
+		User user = new User("123","王","qaz321","laji");
 		mongoTemplate.save(user);
 		System.out.println("插");
 	}

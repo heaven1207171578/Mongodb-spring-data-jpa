@@ -6,8 +6,10 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import com.bucom.boot.Enity.User;
 
-public interface UserRepository extends MongoRepository<User, Long>{
+public interface UserRepository extends MongoRepository<User, String>{
 	
 	Page<User>findByUserNameLike(String userName, Pageable pageable);
+
+	User findByUserName(String userName);
 	
 }
