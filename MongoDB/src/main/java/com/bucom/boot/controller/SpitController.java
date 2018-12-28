@@ -1,19 +1,14 @@
 package com.bucom.boot.controller;
 
-import com.bucom.boot.Enity.Book;
 import com.bucom.boot.Enity.Spit;
-import com.bucom.boot.dao.BookDao;
-import com.bucom.boot.repository.BookRepository;
 import com.bucom.boot.repository.SpitRepository;
 import com.bucom.boot.utils.IdWorker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
-import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.Date;
 import java.util.List;
 

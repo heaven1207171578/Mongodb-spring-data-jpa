@@ -1,21 +1,13 @@
 package com.bucom.boot.controller;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-
+import com.bucom.boot.Enity.Book;
+import com.bucom.boot.dao.BookDao;
+import com.bucom.boot.repository.BookRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.bucom.boot.Enity.Book;
-import com.bucom.boot.Enity.User;
-import com.bucom.boot.dao.BookDao;
-import com.bucom.boot.repository.BookRepository;
-import com.bucom.boot.repository.UserRepository;
+import java.util.List;
 
 @RestController
 @RequestMapping("/book")

@@ -1,8 +1,6 @@
 package com.bucom.boot;
 
-import java.util.Iterator;
-import java.util.List;
-
+import com.bucom.boot.Enity.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +11,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.bucom.boot.Enity.User;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest

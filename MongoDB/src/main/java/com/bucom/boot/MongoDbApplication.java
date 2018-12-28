@@ -15,7 +15,7 @@ public class MongoDbApplication {
 	}
 
 	@Bean
-	public IdWorker idWorkker(){
+	public IdWorker idWorker(){
 		return new IdWorker();
 	}
 	@Bean

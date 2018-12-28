@@ -4,14 +4,12 @@ import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 import java.util.Date;
 /**
  * Created by Administrator on 2018/4/11.
  */
-@Data
 @ConfigurationProperties("jwt.config")
 public class JWTUtils {
 
@@ -20,7 +18,10 @@ public class JWTUtils {
 
         private long ttl ;//过期时间
 
-        /**
+    public JWTUtils() {
+    }
+
+    /**
          * 生成JWT
          *
          * @param id
@@ -52,5 +53,50 @@ public class JWTUtils {
                     .getBody();
         }
 
+    public String getKey() {
+        return this.key;
     }
+
+    public long getTtl() {
+        return this.ttl;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public void setTtl(long ttl) {
+        this.ttl = ttl;
+    }
+
+    public boolean equals(final Object o) {
+        if (o == this) return true;
+        if (!(o instanceof JWTUtils)) return false;
+        final JWTUtils other = (JWTUtils) o;
+        if (!other.canEqual((Object) this)) return false;
+        final Object this$key = this.getKey();
+        final Object other$key = other.getKey();
+        if (this$key == null ? other$key != null : !this$key.equals(other$key)) return false;
+        if (this.getTtl() != other.getTtl()) return false;
+        return true;
+    }
+
+    protected boolean canEqual(final Object other) {
+        return other instanceof JWTUtils;
+    }
+
+    public int hashCode() {
+        final int PRIME = 59;
+        int result = 1;
+        final Object $key = this.getKey();
+        result = result * PRIME + ($key == null ? 43 : $key.hashCode());
+        final long $ttl = this.getTtl();
+        result = result * PRIME + (int) ($ttl >>> 32 ^ $ttl);
+        return result;
+    }
+
+    public String toString() {
+        return "JWTUtils(key=" + this.getKey() + ", ttl=" + this.getTtl() + ")";
+    }
+}
 

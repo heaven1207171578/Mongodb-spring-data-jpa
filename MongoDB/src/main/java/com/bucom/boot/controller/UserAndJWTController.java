@@ -1,16 +1,13 @@
 package com.bucom.boot.controller;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.regex.Pattern;
-
+import com.bucom.boot.Enity.User;
+import com.bucom.boot.repository.UserRepository;
 import com.bucom.boot.utils.IdWorker;
 import com.bucom.boot.utils.JWTUtils;
 import com.bucom.boot.utils.ResultData;
 import com.bucom.boot.utils.StatusCode;
-import org.apache.tomcat.util.http.fileupload.RequestContext;
+import com.sun.deploy.util.StringUtils;
+import io.jsonwebtoken.Claims;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -22,9 +19,11 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import com.bucom.boot.Enity.User;
-import com.bucom.boot.repository.UserRepository;
-import sun.misc.Request;
+import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.regex.Pattern;
 
 @RestController
 @RequestMapping("/api")
@@ -43,12 +42,15 @@ public class UserAndJWTController {
 	private UserRepository userRepository;
 
 	@Autowired
-	MongoTemplate mongoTemplate;
+	private MongoTemplate mongoTemplate;
+
+	@Autowired
+	private HttpServletRequest request;//获取请求头部
 
 
 
 	@GetMapping("/login")
-	public ResultData login(@RequestBody Map<String,Object>map){
+	public ResultData login(@RequestParam Map<String,Object>map){
 		String name =  (String)map.get("name");
 		String pwd = (String) map.get("pwd");
 		User byName = userRepository.findByUserName(name);
@@ -64,16 +66,32 @@ public class UserAndJWTController {
 			result.put("role",byName.getRole());
 			return new ResultData(true,StatusCode.OK,"登陆成功,创建token",result);
 		}
-			return new ResultData();
+			return new ResultData(false,StatusCode.ACCESSERROR,"登陆失败");
 	}
+
+
+
 	@DeleteMapping("/delete/{id}")
 	public ResultData deleteAndRoles(@PathVariable String id){
-//		if (){
-//
-//		}
-		userRepository.deleteById(id);
-
-		return new ResultData();
+		final String header = request.getHeader("Authorization");
+		if (header==null&&"".equals(header)){
+			return new ResultData(false,StatusCode.ACCESSERROR,"删除失败,权限不存在");
+		}
+		//boolean.startsWith(?)判断当前字符串是否是以另外一个给定的字符串“开头”的
+		if (!header.startsWith("Cang ")){
+			return new ResultData(false,StatusCode.ACCESSERROR,"删除失败,token格式不足");
+		}
+		final String token = header.substring(5);//拿到从请求头中第5位的token
+		try {
+			final Claims claims = jwtUtils.parseJWT(token);//解析token
+			String roles = (String) claims.get("roles");
+			if (!roles.contains("admin")){
+				userRepository.deleteById(id);
+			}
+		}catch (Exception e){
+			return new ResultData(false,StatusCode.ACCESSERROR,"删除失败,token时间过期");
+		}
+		return new ResultData(true,StatusCode.OK,"删除成功");
 	}
 
 
@@ -87,7 +105,7 @@ public class UserAndJWTController {
 		 * Pattern.CASE_INSENSITIVE:不区分大小写
 		 *
 		 */
-		Pattern pattern = Pattern.compile("^.*" + "Cang9" + ".*$",Pattern.CASE_INSENSITIVE);
+		Pattern pattern = Pattern.compile("^.*" + "" + ".*$",Pattern.CASE_INSENSITIVE);
 		Query query=new Query(Criteria.where("userName").regex(pattern));
 		List<User> all = mongoTemplate.find(query, User.class);
 		all.forEach(user -> System.out.println(user));
@@ -133,8 +151,9 @@ public class UserAndJWTController {
 		public String saveUser(@RequestBody Map<String,Object>map){
 			String name =  (String)map.get("name");
 			String pwd = (String) map.get("pwd");
+			String roles = (String) map.get("roles");
 			String encodePwd = encoder.encode(pwd);
-			User user=new User(idWorker.nextId()+"",name,encodePwd,"admin");
+			User user=new User(idWorker.nextId()+"",name,encodePwd,roles);
 			userRepository.save(user);
 			return "注册成功";
 		}
