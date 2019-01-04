@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: friend-micro-server
+  datasource:
+          name: test
+          url: jdbc:mysql://127.0.0.1:3306/springcloud
+          username: root
+          password: root
+          driver-class-name: com.mysql.jdbc.Driver
+  jpa:
+      database: mysql
+      show-sql: true
+#  main:
+#    allow-bean-definition-overriding: true
+eureka:
+    client:
+       service-url:
+           defaultZone: http://127.0.0.1:1008/eureka/
+    instance:
+      prefer-ip-address: true #开启微服务可跨域访问
+
+server:
+  port: 7082
+jwt:
+  config:
+    key: HeavenY    #加盐

@@ -117,7 +117,7 @@ public class UserAndJWTController {
 		Pattern pattern = Pattern.compile("^.*" + "" + ".*$",Pattern.CASE_INSENSITIVE);
 		Query query=new Query(Criteria.where("userName").regex(pattern));
 		List<User> all = mongoTemplate.find(query, User.class);
-		all.forEach(user -> System.out.println(user));
+		all.forEach(user -> System.out.println(user+"8081"));
 		return all;
 	}
 

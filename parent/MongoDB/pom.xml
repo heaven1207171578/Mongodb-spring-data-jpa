@@ -42,10 +42,7 @@
             <artifactId>spring-boot-autoconfigure</artifactId>
             <version>RELEASE</version>
         </dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
+
         <!-- tag::security[权限控制] -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -56,6 +53,11 @@
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>
             <version>0.6.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>common</artifactId>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
