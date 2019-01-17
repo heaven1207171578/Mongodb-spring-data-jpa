@@ -25,7 +25,7 @@ public class JWTInterceptor implements HandlerInterceptor {
                     final Claims claims = jwtUtils.parseJWT(token);//解析token
                     String roles = (String) claims.get("roles");
                     if (roles.equals("admin")&&roles!=null){
-                        request.setAttribute("roles_admin",claims);
+                        request.setAttribute("roles_admin",claims);//直接放到域中 解析好的token
                     }
                 }catch (Exception e){
                     throw  new RuntimeException("token不正确");

@@ -47,10 +47,8 @@ public class UserAndJWTController {
 	@Autowired
 	private HttpServletRequest request;//获取请求头部
 
-
-
-	@GetMapping("/login")
-	public ResultData login(@RequestBody Map<String,Object>map){
+  @GetMapping(value = "/login", produces = "application/json")
+  public ResultData login(@RequestBody Map<String, Object> map) {
 		String name =  (String)map.get("name");
 		String pwd = (String) map.get("pwd");
 		User byName = userRepository.findByUserName(name);
@@ -70,7 +68,7 @@ public class UserAndJWTController {
 	}
 
 
-
+// 这段经常用的检查请求头的Token的代码 放到拦截器中 进行统一处理
 //	@DeleteMapping("/delete/{id}")
 //	public ResultData deleteAndRoles(@PathVariable String id){
 //		final String header = request.getHeader("Authorization");

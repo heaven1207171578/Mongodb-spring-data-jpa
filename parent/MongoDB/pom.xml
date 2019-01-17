@@ -40,7 +40,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-autoconfigure</artifactId>
-            <version>RELEASE</version>
         </dependency>
 
         <!-- tag::security[权限控制] -->

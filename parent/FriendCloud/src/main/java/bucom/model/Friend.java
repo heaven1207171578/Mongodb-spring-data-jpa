@@ -1,13 +1,15 @@
 package bucom.model;
 
 import lombok.Data;
+import org.springframework.data.annotation.Id;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
+import java.io.Serializable;
+
 
 @Data
 @Entity
-public class Firend {
+public class Friend implements Serializable {
     @Id //联合主键
     private String userid;
     @Id //联合主键
