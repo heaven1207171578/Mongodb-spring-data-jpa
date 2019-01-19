@@ -5,10 +5,10 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
 
-public interface BookRepository extends MongoRepository<Book, Long>{
-	
-	//List<Book> findByBookIdAndBookName(long bookid,String bookname);
-	List<Book> findByBookidAndBookName(long bookid,String bookname);
-	
-	  
+public interface BookRepository extends MongoRepository<Book, Long> {
+
+    //List<Book> findByBookIdAndBookName(long bookid,String bookname);
+    List<Book> findByBookidAndBookName(long bookid, String bookname);
+
+
 }

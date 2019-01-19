@@ -7,21 +7,23 @@ import java.math.BigDecimal;
 
 //@Document(collection="book")
 public class Book {
-	
-	public Book() {
-		super();
-	}
-	public Book(long bookid, String bookName, BigDecimal bookprice) {
-		super();
-		this.bookid = bookid;
-		this.bookName = bookName;
-		this.bookprice = bookprice;
-	}
-	@Id
-	private long bookid;
-	@Field("book_name")
-	private String bookName;
-	private BigDecimal bookprice;
+
+    public Book() {
+        super();
+    }
+
+    public Book(long bookid, String bookName, BigDecimal bookprice) {
+        super();
+        this.bookid = bookid;
+        this.bookName = bookName;
+        this.bookprice = bookprice;
+    }
+
+    @Id
+    private long bookid;
+    @Field("book_name")
+    private String bookName;
+    private BigDecimal bookprice;
 
     public long getBookid() {
         return this.bookid;

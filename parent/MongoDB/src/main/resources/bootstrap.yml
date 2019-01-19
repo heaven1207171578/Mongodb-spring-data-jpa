@@ -1,0 +1,7 @@
+spring:
+  cloud:
+    config:
+      name: MongoANDJWT  #MongoANDJWT-dev.yml
+      profile: dev
+      label: master    #提交master分支
+      uri: http://127.0.0.1:10001 #配置中心地址
