@@ -11,6 +11,8 @@ eureka:
            defaultZone: http://127.0.0.1:1008/eureka/
     instance:
       prefer-ip-address: true #开启微服务可跨域访问
-
 server:
   port: 7081
+feign:
+  hystrix:
+    enabled: true

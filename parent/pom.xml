@@ -12,6 +12,8 @@
         <module>EurekaServer</module>
         <module>FeginMongodb</module>
         <module>common</module>
+        <module>gateway</module>
+        <module>Config</module>
     </modules>
     <packaging>pom</packaging>
 

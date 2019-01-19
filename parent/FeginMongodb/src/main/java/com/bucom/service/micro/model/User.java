@@ -9,9 +9,9 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class User implements Serializable{
+public class User implements Serializable {
 
-	private String id;
+    private String id;
     private String userName;
     private String passWord;
     private Object role;

@@ -9,6 +9,7 @@ import com.bucom.boot.utils.StatusCode;
 import io.jsonwebtoken.Claims;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -27,6 +28,7 @@ import java.util.regex.Pattern;
 
 @RestController
 @RequestMapping("/api")
+@RefreshScope //自动刷新github配置中心的配置文件(在配置文件自定义的配置)
 public class UserAndJWTController {
 
     @Autowired

@@ -1,0 +1,23 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: Gateway
+eureka:
+    client:
+       service-url:
+           defaultZone: http://127.0.0.1:1008/eureka/
+    instance:
+      prefer-ip-address: true #开启微服务可跨域访问
+zuul:
+  routes:
+    feginMongodb:  #自定义的名字,区分是对哪个服务进行网关注入
+      path: /feign/**
+      serviceId: feginMongodb #微服务的string.application.name
+    MongoDB:
+      path: /user/**
+      serviceId: mongoAndJWT
+jwt:
+  config:
+    key: HeavenY    #加盐
+    ttl: 3600000    #过期时间1个小时

@@ -12,3 +12,11 @@ spring:
 #         search-paths: config-repo                             # git仓库地址下的相对地址，可以配置多个，用,分割。
 #         username:                                             # git仓库的账号
 #         password:                                             # git仓库的密码
+  rabbitmq:
+      host: 127.0.0.1
+      port: 5672
+management: #暴露触发消息总线的地址 bus
+  endpoints:
+    web:
+      exposure:
+        include: bus-refresh
