@@ -28,6 +28,7 @@ import java.util.regex.Pattern;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin
 @RefreshScope //自动刷新github配置中心的配置文件(在配置文件自定义的配置)
 public class UserAndJWTController {
 
@@ -105,7 +106,7 @@ public class UserAndJWTController {
 
 
     @GetMapping("/user")
-    public List<User> findUserAndLimit() {
+    public ResultData findUserAndLimit() {
         //List<User> all = userRepository.findAll();
         /**
          *  ^.*张$   :右匹配
@@ -118,7 +119,7 @@ public class UserAndJWTController {
         Query query = new Query(Criteria.where("userName").regex(pattern));
         List<User> all = mongoTemplate.find(query, User.class);
         all.forEach(user -> System.out.println(user + "8081"));
-        return all;
+        return new ResultData(true, StatusCode.OK, "成功",all);
     }
 
     @GetMapping("/user/page")
@@ -168,5 +169,14 @@ public class UserAndJWTController {
         return "注册成功";
     }
 
+    @RequestMapping("/jsonpuser")
+    public String jsonpUser(@RequestParam("callback") String callback) {
+        Pattern pattern = Pattern.compile("^.*" + "" + ".*$", Pattern.CASE_INSENSITIVE);
+        Query query = new Query(Criteria.where("userName").regex(pattern));
+        List<User> all = mongoTemplate.find(query, User.class);
+        all.forEach(user -> System.out.println(user + "8081"));
+        System.out.println("callback:"+callback);
+        return callback+"("+all+")";
+    }
 
 }
