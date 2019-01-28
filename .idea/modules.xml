@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/parent/Config/Config.iml" filepath="$PROJECT_DIR$/parent/Config/Config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/parent/ElasticsearchAndIndex/ElasticsearchAndIndex.iml" filepath="$PROJECT_DIR$/parent/ElasticsearchAndIndex/ElasticsearchAndIndex.iml" />
+      <module fileurl="file://$PROJECT_DIR$/parent/EurekaServer/EurekaServer.iml" filepath="$PROJECT_DIR$/parent/EurekaServer/EurekaServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/parent/FeginMongodb/FeginMongodb.iml" filepath="$PROJECT_DIR$/parent/FeginMongodb/FeginMongodb.iml" />
+      <module fileurl="file://$PROJECT_DIR$/parent/FriendCloud/Friend-Cloud.iml" filepath="$PROJECT_DIR$/parent/FriendCloud/Friend-Cloud.iml" />
+      <module fileurl="file://$PROJECT_DIR$/parent/MongoDB/MongoDBAndJWT.iml" filepath="$PROJECT_DIR$/parent/MongoDB/MongoDBAndJWT.iml" />
+      <module fileurl="file://$PROJECT_DIR$/parent/common/common.iml" filepath="$PROJECT_DIR$/parent/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/parent/gateway/gateway.iml" filepath="$PROJECT_DIR$/parent/gateway/gateway.iml" />
+      <module fileurl="file://$PROJECT_DIR$/parent/pro_parent.iml" filepath="$PROJECT_DIR$/parent/pro_parent.iml" />
+    </modules>
+  </component>
+</project>

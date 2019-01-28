@@ -7,8 +7,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="common" />
+        <module name="Config" />
+        <module name="ElasticsearchAndIndex" />
         <module name="FeginMongodb" />
         <module name="Friend-Cloud" />
+        <module name="gateway" />
         <module name="MongoDBAndJWT" />
         <module name="parent" />
       </profile>
@@ -16,13 +19,16 @@
     <bytecodeTargetLevel>
       <module name="APiClient" target="1.8" />
       <module name="common" target="1.8" />
+      <module name="Config" target="1.8" />
       <module name="consumerClient" target="1.8" />
+      <module name="ElasticsearchAndIndex" target="1.8" />
       <module name="EurekaServer" target="1.8" />
       <module name="EurekaService" target="1.8" />
       <module name="FeginMongodb" target="1.8" />
       <module name="FeignMongoDB" target="1.8" />
       <module name="Friend-Cloud" target="1.8" />
       <module name="FriendCloud" target="1.8" />
+      <module name="gateway" target="1.8" />
       <module name="MongoDB" target="1.8" />
       <module name="MongoDBAndJWT" target="1.8" />
       <module name="parent" target="1.5" />

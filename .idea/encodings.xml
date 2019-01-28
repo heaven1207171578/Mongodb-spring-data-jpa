@@ -4,11 +4,14 @@
     <file url="file://$PROJECT_DIR$/../APiClient" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../EurekaService" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/parent" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/parent/Config" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/parent/ElasticsearchAndIndex" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/parent/EurekaServer" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/parent/FeginMongodb" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/parent/FriendCloud" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/parent/MongoDB" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/parent/common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/parent/gateway" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../ProviderClient" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/../consumerClient" charset="UTF-8" />
   </component>

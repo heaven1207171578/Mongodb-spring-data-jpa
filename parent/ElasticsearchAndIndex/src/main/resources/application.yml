@@ -1,0 +1,15 @@
+spring:
+  data:
+    elasticsearch:
+      cluster-nodes: 127.0.0.1:9300
+  application:
+    name: ESearch
+eureka:
+    client:
+       service-url:
+           defaultZone: http://127.0.0.1:1008/eureka/
+    instance:
+      prefer-ip-address: true #开启微服务可跨域访问
+server:
+  port: 3081
+
