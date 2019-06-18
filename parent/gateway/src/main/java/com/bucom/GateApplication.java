@@ -15,14 +15,13 @@ import utils.JWTUtils;
 @SpringBootApplication
 @EnableZuulProxy
 public class GateApplication {
-    public static void main(String[] args) {
-        SpringApplication.run(GateApplication.class, args);
+  public static void main(String[] args) {
+    SpringApplication.run(GateApplication.class, args);
+  }
 
-    }
+  @Bean
+  public JWTUtils jwtUtil() {
 
-    @Bean
-    public JWTUtils jwtUtil() {
-
-        return new JWTUtils();
-    }
+    return new JWTUtils();
+  }
 }

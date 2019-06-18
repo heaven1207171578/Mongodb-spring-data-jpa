@@ -8,17 +8,16 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import utils.IdWorker;
 
-
 @EnableEurekaClient
 @SpringBootApplication
 public class ESApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(ESApplication.class, args);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(ESApplication.class, args);
+  }
 
-    @Bean
-    public IdWorker idWorker() {
-        return new IdWorker();
-    }
+  @Bean
+  public IdWorker idWorker() {
+    return new IdWorker();
+  }
 }

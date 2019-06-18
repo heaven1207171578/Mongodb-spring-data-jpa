@@ -17,33 +17,29 @@ import java.util.List;
 @SpringBootTest
 public class MongoDbApplicationTests {
 
-    @Autowired
-    private MongoTemplate mongoTemplate;
+  @Autowired private MongoTemplate mongoTemplate;
 
-    @Test
-    public void testinsertMg() {
-        User user = new User("123", "王", "qaz321", "laji");
-        mongoTemplate.save(user);
-        System.out.println("插");
+  @Test
+  public void testinsertMg() {
+    User user = new User("123", "王", "qaz321", "laji");
+    mongoTemplate.save(user);
+    System.out.println("插");
+  }
+
+  @Test
+  public void testFindMg() {
+    Query query = new Query(Criteria.where("id").is(123));
+    List<User> find = mongoTemplate.find(query, User.class);
+    for (User user : find) {
+      System.out.println(user.getUserName());
     }
+  }
 
-    @Test
-    public void testFindMg() {
-        Query query = new Query(Criteria.where("id").is(123));
-        List<User> find = mongoTemplate.find(query, User.class);
-        for (User user : find) {
-            System.out.println(user.getUserName());
-        }
-
-    }
-
-    @Test
-    public void testupdateMg() {
-        Query query = new Query(Criteria.where("id").is(123));
-        Update update = new Update().set("userName", "张");
-        mongoTemplate.updateFirst(query, update, User.class);
-        System.out.println("更新成功");
-    }
-
-
+  @Test
+  public void testupdateMg() {
+    Query query = new Query(Criteria.where("id").is(123));
+    Update update = new Update().set("userName", "张");
+    mongoTemplate.updateFirst(query, update, User.class);
+    System.out.println("更新成功");
+  }
 }

@@ -13,8 +13,8 @@ import java.util.List;
  */
 @Component
 public class UserServiceImpl implements UserService {
-    @Override
-    public List<User> findUserPage() {
-        return Arrays.asList(new User("调用", "失败", "了", null));
-    }
+  @Override
+  public List<User> findUserPage() {
+    return Arrays.asList(new User("调用", "失败", "了", null));
+  }
 }

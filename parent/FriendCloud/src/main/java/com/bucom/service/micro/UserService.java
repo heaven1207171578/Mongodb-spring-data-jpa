@@ -6,6 +6,4 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @FeignClient("mongoAndJWT")
-public interface UserService {
-
-}
+public interface UserService {}

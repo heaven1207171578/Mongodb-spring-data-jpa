@@ -15,20 +15,17 @@ import utils.IdWorker;
 @Service
 public class ProductService {
 
-    @Autowired
-    private ProductReporistory productReporistory;
+  @Autowired private ProductReporistory productReporistory;
 
-    @Autowired
-    private IdWorker idWorker;
+  @Autowired private IdWorker idWorker;
 
+  public Product save(Product product) {
+    Product save = productReporistory.save(product);
+    return save;
+  }
 
-    public Product save(Product product){
-        Product save = productReporistory.save(product);
-        return save;
-    }
+  public Page<Product> findByKey(String key, Pageable pageable) {
 
-    public Page<Product>findByKey(String key, Pageable pageable){
-
-        return productReporistory.findByNameOrContentLike(key,key,pageable);
-    }
+    return productReporistory.findByNameOrContentLike(key, key, pageable);
+  }
 }

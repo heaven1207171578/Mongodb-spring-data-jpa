@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/test")
 public class TestRequestBodyController {
 
-    @RequestMapping("/body")
-    public String test(@RequestBody User user){
+  @RequestMapping("/body")
+  public String test(@RequestBody User user) {
     System.out.println(user.name);
-        return "yes";
-    }
+    return "yes";
+  }
 }

@@ -9,22 +9,17 @@ import java.math.BigDecimal;
 
 @Repository
 public class BookDao {
-    @Autowired
-    MongoTemplate mongoTemplate;
+  @Autowired MongoTemplate mongoTemplate;
 
-    public void saveBook() {
-        Book book = new Book(321L, "大花", new BigDecimal("123.22"));
+  public void saveBook() {
+    Book book = new Book(321L, "大花", new BigDecimal("123.22"));
 
-        mongoTemplate.save(book);
+    mongoTemplate.save(book);
+  }
 
-    }
+  public void saveBookorUser() {
+    Book book = new Book(3321L, "大花", new BigDecimal("123.22"));
 
-    public void saveBookorUser() {
-        Book book = new Book(3321L, "大花", new BigDecimal("123.22"));
-
-        mongoTemplate.save(book, "book");
-
-    }
-
-
+    mongoTemplate.save(book, "book");
+  }
 }

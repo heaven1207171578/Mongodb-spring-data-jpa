@@ -14,16 +14,11 @@ import java.util.Optional;
 @SpringBootTest
 public class MongoDbRepostoryTests {
 
+  @Autowired private UserRepository userRepository;
 
-    @Autowired
-    private UserRepository userRepository;
-
-    @Test
-    public void testinsertMg() {
-        User user = new User("123", "王", "qaz321", "垃圾taba");
-        Optional<User> findById = userRepository.findById("123");
-
-    }
-
-
+  @Test
+  public void testinsertMg() {
+    User user = new User("123", "王", "qaz321", "垃圾taba");
+    Optional<User> findById = userRepository.findById("123");
+  }
 }

@@ -17,40 +17,37 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping(path = "/friend")
 public class FriendController {
 
-    @Autowired
-    private HttpServletRequest httpServletRequest;
+  @Autowired private HttpServletRequest httpServletRequest;
 
-    @Autowired
-    private IUserService userService;
+  @Autowired private IUserService userService;
 
-
-    @PostMapping("friend/{firendid}/{islike}")
-    public ResultData addfirend(@PathVariable String firendid, @PathVariable String islike) {
-        final Claims claims = (Claims) httpServletRequest.getAttribute("roles_admin");
-        if (claims != null) {
-            if (claims.get("roles").equals("admin")) {
-                String id = claims.getId();
-                // 判断是添加好友还是添加非好友
-                if (islike != null) {
-                    if (islike.equals("1")) {
-                        // 添加好友
-                        int flag = userService.addFriend(id, firendid);
-                        if (flag == 0) {
-                            return new ResultData(false, StatusCode.ERROR, "buneng chongfu tianjai ");
-                        }
-                        if (flag == 1) {
-                            return new ResultData(true, StatusCode.OK, "添加成功");
-                        }
-                    } else if (islike.equals("2")) {
-                        // 添加非好友
-                    }
-                }
-                return new ResultData(true, StatusCode.OK, "接收到");
-            } else {
-                return new ResultData(false, StatusCode.ERROR, "权限不足");
+  @PostMapping("friend/{firendid}/{islike}")
+  public ResultData addfirend(@PathVariable String firendid, @PathVariable String islike) {
+    final Claims claims = (Claims) httpServletRequest.getAttribute("roles_admin");
+    if (claims != null) {
+      if (claims.get("roles").equals("admin")) {
+        String id = claims.getId();
+        // 判断是添加好友还是添加非好友
+        if (islike != null) {
+          if (islike.equals("1")) {
+            // 添加好友
+            int flag = userService.addFriend(id, firendid);
+            if (flag == 0) {
+              return new ResultData(false, StatusCode.ERROR, "buneng chongfu tianjai ");
             }
+            if (flag == 1) {
+              return new ResultData(true, StatusCode.OK, "添加成功");
+            }
+          } else if (islike.equals("2")) {
+            // 添加非好友
+          }
         }
-
+        return new ResultData(true, StatusCode.OK, "接收到");
+      } else {
         return new ResultData(false, StatusCode.ERROR, "权限不足");
+      }
     }
+
+    return new ResultData(false, StatusCode.ERROR, "权限不足");
+  }
 }

@@ -22,20 +22,20 @@ import javax.ws.rs.POST;
 @CrossOrigin
 public class ProController {
 
-    @Autowired
-    ProductService productService;
+  @Autowired ProductService productService;
 
-    @PostMapping("/pro")
-    public ResultData save(@RequestBody Product product){
-        Product save = productService.save(product);
-        return new ResultData(true,200,"添加成功",save);
-    }
+  @PostMapping("/pro")
+  public ResultData save(@RequestBody Product product) {
+    Product save = productService.save(product);
+    return new ResultData(true, 200, "添加成功", save);
+  }
 
-    @GetMapping("/pro/{number}/{pageSize}")
-    public ResultData findByKey(@RequestParam String key,@PathVariable int number,@PathVariable int pageSize){
-        Pageable pageable=PageRequest.of(number-1,pageSize);
-        Page<Product> byKey = productService.findByKey(key, pageable);
-        return new ResultData(true,200,"查询成功",new PageResult<Product>(byKey.getTotalElements(), byKey.getContent()));
-    }
-
+  @GetMapping("/pro/{number}/{pageSize}")
+  public ResultData findByKey(
+      @RequestParam String key, @PathVariable int number, @PathVariable int pageSize) {
+    Pageable pageable = PageRequest.of(number - 1, pageSize);
+    Page<Product> byKey = productService.findByKey(key, pageable);
+    return new ResultData(
+        true, 200, "查询成功", new PageResult<Product>(byKey.getTotalElements(), byKey.getContent()));
+  }
 }

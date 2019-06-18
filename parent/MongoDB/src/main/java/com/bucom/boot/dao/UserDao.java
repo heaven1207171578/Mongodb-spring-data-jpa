@@ -1,6 +1,3 @@
 package com.bucom.boot.dao;
 
-public class UserDao {
-
-
-}
+public class UserDao {}

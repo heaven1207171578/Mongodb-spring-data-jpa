@@ -12,24 +12,21 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @EnableEurekaClient
 @SpringBootApplication
-//@CrossOrigin
+// @CrossOrigin
 public class MongoDbApplication extends WebMvcConfigurerAdapter {
 
-    public static void main(String[] args) {
-        SpringApplication.run(MongoDbApplication.class, args);
+  public static void main(String[] args) {
+    SpringApplication.run(MongoDbApplication.class, args);
+  }
 
-    }
+  @Bean
+  public IdWorker idWorker() {
+    return new IdWorker();
+  }
 
+  @Bean
+  public JWTUtils jwtUtil() {
 
-    @Bean
-    public IdWorker idWorker() {
-        return new IdWorker();
-    }
-
-    @Bean
-    public JWTUtils jwtUtil() {
-
-        return new JWTUtils();
-    }
+    return new JWTUtils();
+  }
 }
-

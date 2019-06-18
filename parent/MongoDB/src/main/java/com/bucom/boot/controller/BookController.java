@@ -13,38 +13,32 @@ import java.util.List;
 @RequestMapping("/book")
 public class BookController {
 
-    @Autowired
-    private BookDao bookDao;
-    @Autowired
-    private BookRepository bookRepository;
+  @Autowired private BookDao bookDao;
+  @Autowired private BookRepository bookRepository;
 
-    @RequestMapping("/save")
-    public void save() {
-        bookDao.saveBook();
+  @RequestMapping("/save")
+  public void save() {
+    bookDao.saveBook();
+  }
 
-    }
+  // 不能插入到user
+  @RequestMapping("/saveuser")
+  public void saveuser() {
+    bookDao.saveBookorUser();
+  }
 
-    //不能插入到user
-    @RequestMapping("/saveuser")
-    public void saveuser() {
-        bookDao.saveBookorUser();
+  @RequestMapping("/findbook")
+  public List<Book> findbook(long bookid, String bookname) {
+    System.out.println(bookid);
+    System.out.println(bookname);
 
-    }
+    Book book = new Book();
+    book.setBookid(bookid);
+    book.setBookName(bookname);
+    List<Book> list = bookRepository.findByBookidAndBookName(bookid, bookname);
 
-    @RequestMapping("/findbook")
-    public List<Book> findbook(long bookid, String bookname) {
-        System.out.println(bookid);
-        System.out.println(bookname);
+    System.out.println(list);
 
-        Book book = new Book();
-        book.setBookid(bookid);
-        book.setBookName(bookname);
-        List<Book> list = bookRepository.findByBookidAndBookName(bookid, bookname);
-
-        System.out.println(list);
-
-
-        return list;
-    }
-
+    return list;
+  }
 }

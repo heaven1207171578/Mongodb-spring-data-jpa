@@ -12,6 +12,6 @@ import java.util.Map;
 @FeignClient(name = "mongoAndJWT", fallback = UserServiceImpl.class)
 public interface UserService {
 
-    @RequestMapping(value = "/api/user")
-    List<User> findUserPage();
+  @RequestMapping(value = "/api/user")
+  List<User> findUserPage();
 }
